@@ -7,11 +7,14 @@ import Keypad from './components/Keypad';
 
 export default function App() {
   const [displayText, setDisplayText] = useState("TEST")
+  // The cursor placment starts from the last digit, for example
+  // cursorPlacement 0 will be 123|
+  const [cursorPlacement, setCursorPlacement] = useState(0)
   return (
     <>
       <StatusBar />
       <SafeAreaView style={styles.container}>
-        <Display displayText={displayText} style={styles.display} />
+        <Display displayText={displayText} style={styles.display} cursorPlacement={cursorPlacement} />
         <Keypad style={styles.keypad} />
       </SafeAreaView>
     </>
