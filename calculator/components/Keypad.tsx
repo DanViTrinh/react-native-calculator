@@ -2,41 +2,47 @@ import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import KeypadButton from "./KeypadButton";
 
 interface keypadProps {
+  insertToDisplay: (charToInsert: String) => void
   style?: StyleProp<ViewStyle>
 }
 
-export default function Keypad({ style }: keypadProps) {
+export default function Keypad({ style, insertToDisplay }: keypadProps) {
+
+  function updateDisplay(keyPressed: String) {
+    insertToDisplay(keyPressed)
+  }
+
   return (
     <View style={[styles.container, style]}>
       <View style={styles.row}>
-        <KeypadButton title="C" />
-        <KeypadButton title="()" />
-        <KeypadButton title="%" />
-        <KeypadButton title="/" />
+        <KeypadButton title="C" updateDisplay={updateDisplay} />
+        <KeypadButton title="()" updateDisplay={updateDisplay} />
+        <KeypadButton title="%" updateDisplay={updateDisplay} />
+        <KeypadButton title="/" updateDisplay={updateDisplay} />
       </View>
       <View style={styles.row}>
-        <KeypadButton title="7" />
-        <KeypadButton title="8" />
-        <KeypadButton title="9" />
-        <KeypadButton title="X" />
+        <KeypadButton title="7" updateDisplay={updateDisplay} />
+        <KeypadButton title="8" updateDisplay={updateDisplay} />
+        <KeypadButton title="9" updateDisplay={updateDisplay} />
+        <KeypadButton title="X" updateDisplay={updateDisplay} />
       </View>
       <View style={styles.row}>
-        <KeypadButton title="4" />
-        <KeypadButton title="5" />
-        <KeypadButton title="6" />
-        <KeypadButton title="-" />
+        <KeypadButton title="4" updateDisplay={updateDisplay} />
+        <KeypadButton title="5" updateDisplay={updateDisplay} />
+        <KeypadButton title="6" updateDisplay={updateDisplay} />
+        <KeypadButton title="-" updateDisplay={updateDisplay} />
       </View>
       <View style={styles.row}>
-        <KeypadButton title="1" />
-        <KeypadButton title="2" />
-        <KeypadButton title="3" />
-        <KeypadButton title="+" />
+        <KeypadButton title="1" updateDisplay={updateDisplay} />
+        <KeypadButton title="2" updateDisplay={updateDisplay} />
+        <KeypadButton title="3" updateDisplay={updateDisplay} />
+        <KeypadButton title="+" updateDisplay={updateDisplay} />
       </View>
       <View style={styles.row}>
-        <KeypadButton title="0" />
-        <KeypadButton title="00" />
-        <KeypadButton title="." />
-        <KeypadButton title="=" />
+        <KeypadButton title="0" updateDisplay={updateDisplay} />
+        <KeypadButton title="00" updateDisplay={updateDisplay} />
+        <KeypadButton title="." updateDisplay={updateDisplay} />
+        <KeypadButton title="=" updateDisplay={updateDisplay} />
       </View>
     </View>
   );

@@ -1,15 +1,19 @@
 import React from 'react';
-import { Text, StyleSheet, Pressable, ViewStyle, StyleProp } from 'react-native';
+import { Text, StyleSheet, Pressable, ViewStyle, StyleProp, GestureResponderEvent } from 'react-native';
 
 interface keypadButtonProps {
   title: String,
+  updateDisplay: (keyPressed: String) => void
+
   style?: StyleProp<ViewStyle>
 }
 
-export default function KeypadButton({ title, style }: keypadButtonProps) {
+export default function KeypadButton({ title, updateDisplay, style }: keypadButtonProps) {
 
   return (
-    <Pressable style={[styles.button, style]} onPress={() => { }}>
+    <Pressable style={[styles.button, style]} onPress={() => {
+      updateDisplay(title)
+    }} >
       <Text style={styles.text}>{title}</Text>
     </Pressable>
   );

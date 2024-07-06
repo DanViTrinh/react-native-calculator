@@ -31,7 +31,7 @@ export default function App() {
       <StatusBar />
       <SafeAreaView style={styles.container}>
         <Display displayText={displayText} style={styles.display} />
-        <Keypad style={styles.keypad} />
+        <Keypad style={styles.keypad} insertToDisplay={insertToDisplay} />
       </SafeAreaView>
     </>
   );
