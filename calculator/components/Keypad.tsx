@@ -1,7 +1,11 @@
 import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import KeypadButton from "./KeypadButton";
 
-export default function Keypad(style: StyleProp<ViewStyle>) {
+interface keypadProps {
+  style?: StyleProp<ViewStyle>
+}
+
+export default function Keypad({ style }: keypadProps) {
   return (
     <View style={[styles.container, style]}>
       <View style={styles.row}>
