@@ -1,19 +1,29 @@
-import { Text, View, StyleSheet, SafeAreaView } from "react-native";
+import { Text, View, StyleSheet, ViewStyle, StyleProp } from "react-native";
 
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
-    paddingTop: "10%",
-    paddingRight: "5%"
   },
+  text: {
+    paddingTop: "10%",
+    paddingRight: "5%",
+    paddingBottom: "10%"
+  }
 });
 
-export default function Display({ displayText }: { displayText: String }) {
+export default function Display({
+  displayText,
+  style
+}: {
+  displayText: String,
+  style: StyleProp<ViewStyle>
+}) {
   return (
-    <View style={styles.container}>
-      <Text>{displayText}</Text>
+    <View style={[styles.container, style]}>
+      <Text style={styles.text}>{displayText}</Text>
     </View>
   )
 }
