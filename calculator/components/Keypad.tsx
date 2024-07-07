@@ -1,5 +1,6 @@
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, TouchableWithoutFeedback, View, ViewStyle } from "react-native";
 import KeypadButton from "./KeypadButton";
+import { evaluate } from "mathjs";
 
 interface keypadProps {
   output: string
@@ -10,14 +11,20 @@ interface keypadProps {
 export default function Keypad({ output, setOutput, style }: keypadProps) {
 
   function insertToDisplay(charToInsert: string): void {
-    setOutput(output + charToInsert)
+    if (output === "" && charToInsert.at(0) === "0") {
+      setOutput("0")
+    } else if (output === "0") {
+      setOutput(charToInsert)
+    } else {
+      setOutput(output + charToInsert)
+    }
   }
 
   // NOTE: the eval funciton is a security risk, but is ignored
   // because of its simplicity. A beter approach could be used in the future.
   function solve() {
     try {
-      const solution = eval(output)
+      const solution: string = evaluate(output).toString()
       setOutput(solution)
     } catch (e) {
       console.error(e)

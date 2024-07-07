@@ -10,7 +10,9 @@ interface toolBarProps {
 export default function ToolBar({ output, setOutput, style }: toolBarProps) {
 
   function deleteChar() {
-    setOutput(output.substring(0, output.length - 1))
+    if (output !== undefined) {
+      setOutput(output.substring(0, output.length - 1))
+    }
   }
 
   return (
