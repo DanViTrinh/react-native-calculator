@@ -7,11 +7,11 @@ import Keypad from './components/Keypad';
 
 // TODO: BETTER HANDLING FOR CURSOR
 export default function App() {
-  const INITIAL_DISPLAY_TEXT = "TEST"
+  const INITIAL_DISPLAY_TEXT = ""
 
-  const [displayText, setDisplayText] = useState<String>(INITIAL_DISPLAY_TEXT)
+  const [displayText, setDisplayText] = useState<string>(INITIAL_DISPLAY_TEXT)
 
-  function insertToDisplay(charToInsert: String): void {
+  function insertToDisplay(charToInsert: string): void {
     const cursorIndexInText = displayText.length
 
     const newText = displayText.substring(0, cursorIndexInText)
@@ -21,12 +21,23 @@ export default function App() {
     setDisplayText(newText)
   }
 
+  // NOTE: the eval funciton is a security risk, but is ignored
+  // because of its simplicity. A beter approach could be used in the future.
+  function solve() {
+    try {
+      const solution = eval(displayText)
+      setDisplayText(solution)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return (
     <>
       <StatusBar />
       <SafeAreaView style={styles.container}>
         <Display displayText={displayText} style={styles.display} />
-        <Keypad style={styles.keypad} insertToDisplay={insertToDisplay} />
+        <Keypad style={styles.keypad} insertToDisplay={insertToDisplay} solve={solve} />
       </SafeAreaView>
     </>
   );

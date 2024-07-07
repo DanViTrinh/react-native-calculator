@@ -3,16 +3,16 @@ import { Text, StyleSheet, Pressable, ViewStyle, StyleProp, GestureResponderEven
 
 interface keypadButtonProps {
   title: String,
-  updateDisplay: (keyPressed: String) => void
+  onPress: (keyPressed: String) => void
 
   style?: StyleProp<ViewStyle>
 }
 
-export default function KeypadButton({ title, updateDisplay, style }: keypadButtonProps) {
+export default function KeypadButton({ title, onPress, style }: keypadButtonProps) {
 
   return (
     <Pressable style={[styles.button, style]} onPress={() => {
-      updateDisplay(title)
+      onPress(title)
     }} >
       <Text style={styles.text}>{title}</Text>
     </Pressable>
