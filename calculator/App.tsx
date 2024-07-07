@@ -4,6 +4,7 @@ import Display from './components/Display';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useEffect, useState } from 'react';
 import Keypad from './components/Keypad';
+import ToolBar from './components/ToolBar';
 
 // TODO: BETTER HANDLING FOR CURSOR
 export default function App() {
@@ -40,7 +41,8 @@ export default function App() {
       <StatusBar />
       <SafeAreaView style={styles.container}>
         <Display displayText={displayText} style={styles.display} />
-        <Keypad style={styles.keypad} insertToDisplay={insertToDisplay} solve={solve} clear={clear} deleteChar={deleteChar} />
+        <ToolBar style={styles.toolbar} deleteChar={deleteChar} />
+        <Keypad style={styles.keypad} insertToDisplay={insertToDisplay} solve={solve} clear={clear} />
       </SafeAreaView>
     </>
   );
@@ -57,7 +59,11 @@ const styles = StyleSheet.create({
   },
   keypad: {
 
+  },
+  toolbar: {
+    height: 40
   }
+
 })
 
 
