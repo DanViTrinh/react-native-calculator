@@ -2,13 +2,31 @@ import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 import KeypadButton from "./KeypadButton";
 
 interface keypadProps {
-  insertToDisplay: (charToInsert: String) => void
-  solve: () => void
-  clear: () => void
+  output: string
+  setOutput: React.Dispatch<React.SetStateAction<string>>
   style?: StyleProp<ViewStyle>
 }
 
-export default function Keypad({ insertToDisplay, solve, clear, style }: keypadProps) {
+export default function Keypad({ output, setOutput, style }: keypadProps) {
+
+  function insertToDisplay(charToInsert: string): void {
+    setOutput(output + charToInsert)
+  }
+
+  // NOTE: the eval funciton is a security risk, but is ignored
+  // because of its simplicity. A beter approach could be used in the future.
+  function solve() {
+    try {
+      const solution = eval(output)
+      setOutput(solution)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  function clear() {
+    setOutput("")
+  }
 
   function onKeyPress(keyPress: string) {
     switch (keyPress) {
