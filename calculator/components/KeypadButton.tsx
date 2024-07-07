@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, Pressable, ViewStyle, StyleProp, GestureResponderEvent } from 'react-native';
+import { Text, StyleSheet, Pressable, ViewStyle, StyleProp } from 'react-native';
 
 interface keypadButtonProps {
   title: String,
