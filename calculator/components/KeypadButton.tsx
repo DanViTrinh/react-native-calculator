@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1
   },
   text: {
+    fontSize: 30,
     color: 'white',
   },
 });
