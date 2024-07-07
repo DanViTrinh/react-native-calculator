@@ -12,13 +12,7 @@ export default function App() {
   const [displayText, setDisplayText] = useState<string>(INITIAL_DISPLAY_TEXT)
 
   function insertToDisplay(charToInsert: string): void {
-    const cursorIndexInText = displayText.length
-
-    const newText = displayText.substring(0, cursorIndexInText)
-      + charToInsert
-      + displayText.substring(cursorIndexInText)
-
-    setDisplayText(newText)
+    setDisplayText(displayText + charToInsert)
   }
 
   // NOTE: the eval funciton is a security risk, but is ignored
