@@ -4,10 +4,12 @@ import KeypadButton from "./KeypadButton";
 interface keypadProps {
   insertToDisplay: (charToInsert: String) => void
   solve: () => void
+  clear: () => void
+  deleteChar: () => void
   style?: StyleProp<ViewStyle>
 }
 
-export default function Keypad({ insertToDisplay, solve, style }: keypadProps) {
+export default function Keypad({ insertToDisplay, solve, clear, deleteChar, style }: keypadProps) {
 
   function onKeyPress(keyPress: string) {
     switch (keyPress) {
@@ -17,6 +19,12 @@ export default function Keypad({ insertToDisplay, solve, style }: keypadProps) {
       case "=":
         solve()
         break;
+      case "C":
+        clear()
+        break;
+      case "Del":
+        deleteChar()
+        break;
       default:
         insertToDisplay(keyPress)
     }
@@ -24,6 +32,10 @@ export default function Keypad({ insertToDisplay, solve, style }: keypadProps) {
 
   return (
     <View style={[styles.container, style]}>
+      <View style={styles.row}>
+        <KeypadButton title="C" onPress={onKeyPress} />
+        <KeypadButton title="Del" onPress={onKeyPress} />
+      </View>
       <View style={styles.row}>
         <KeypadButton title="7" onPress={onKeyPress} />
         <KeypadButton title="8" onPress={onKeyPress} />

@@ -11,6 +11,7 @@ export default function App() {
 
   const [displayText, setDisplayText] = useState<string>(INITIAL_DISPLAY_TEXT)
 
+  // TODO: MOVE mutation into CUSTOM HOOKS
   function insertToDisplay(charToInsert: string): void {
     setDisplayText(displayText + charToInsert)
   }
@@ -26,12 +27,20 @@ export default function App() {
     }
   }
 
+  function clear() {
+    setDisplayText("")
+  }
+
+  function deleteChar() {
+    setDisplayText(displayText.substring(0, displayText.length - 1))
+  }
+
   return (
     <>
       <StatusBar />
       <SafeAreaView style={styles.container}>
         <Display displayText={displayText} style={styles.display} />
-        <Keypad style={styles.keypad} insertToDisplay={insertToDisplay} solve={solve} />
+        <Keypad style={styles.keypad} insertToDisplay={insertToDisplay} solve={solve} clear={clear} deleteChar={deleteChar} />
       </SafeAreaView>
     </>
   );
