@@ -34,6 +34,8 @@ export default function Keypad({ insertToDisplay, solve, clear, deleteChar, styl
     <View style={[styles.container, style]}>
       <View style={styles.row}>
         <KeypadButton title="C" onPress={onKeyPress} />
+        <KeypadButton title="(" onPress={onKeyPress} />
+        <KeypadButton title=")" onPress={onKeyPress} />
         <KeypadButton title="Del" onPress={onKeyPress} />
       </View>
       <View style={styles.row}>
