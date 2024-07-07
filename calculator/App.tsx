@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import Display from './components/Display';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Keypad from './components/Keypad';
 import ToolBar from './components/ToolBar';
 

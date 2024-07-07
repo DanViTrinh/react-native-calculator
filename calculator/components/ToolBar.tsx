@@ -1,4 +1,4 @@
-import { StyleProp, Text, View, ViewStyle } from "react-native";
+import { StyleProp, View, ViewStyle } from "react-native";
 import ToolBarButton from "./ToolBarButton";
 
 interface toolBarProps {
@@ -15,7 +15,7 @@ export default function ToolBar({ output, setOutput, style }: toolBarProps) {
 
   return (
     <View style={style}>
-      <ToolBarButton title="Del" onPress={(keyPress: string) => { deleteChar() }} />
+      <ToolBarButton title="Del" onPress={(_: string) => { deleteChar() }} />
     </View>
   )
 
