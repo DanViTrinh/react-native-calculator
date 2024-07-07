@@ -5,16 +5,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useEffect, useState } from 'react';
 import Keypad from './components/Keypad';
 
+// TODO: BETTER HANDLING FOR CURSOR
 export default function App() {
-  const CURSOR_CHAR = "|"
-
   const INITIAL_DISPLAY_TEXT = "TEST"
 
   // The cursor placment starts from the last digit, for example
   // cursorPlacement 0 will be 123|
   const [cursorPlacement, setCursorPlacement] = useState<number>(0)
 
-  const [displayText, setDisplayText] = useState<String>(INITIAL_DISPLAY_TEXT + CURSOR_CHAR)
+  const [displayText, setDisplayText] = useState<String>(INITIAL_DISPLAY_TEXT)
 
   function insertToDisplay(charToInsert: String): void {
     const cursorIndexInText = displayText.length - cursorPlacement
