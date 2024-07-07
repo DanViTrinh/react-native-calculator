@@ -15,12 +15,6 @@ export default function Keypad({ style, insertToDisplay }: keypadProps) {
   return (
     <View style={[styles.container, style]}>
       <View style={styles.row}>
-        <KeypadButton title="C" updateDisplay={updateDisplay} />
-        <KeypadButton title="()" updateDisplay={updateDisplay} />
-        <KeypadButton title="%" updateDisplay={updateDisplay} />
-        <KeypadButton title="/" updateDisplay={updateDisplay} />
-      </View>
-      <View style={styles.row}>
         <KeypadButton title="7" updateDisplay={updateDisplay} />
         <KeypadButton title="8" updateDisplay={updateDisplay} />
         <KeypadButton title="9" updateDisplay={updateDisplay} />
