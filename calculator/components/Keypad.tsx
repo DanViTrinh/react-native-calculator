@@ -9,53 +9,44 @@ interface keypadProps {
 
 export default function Keypad({ insertToDisplay, solve, style }: keypadProps) {
 
-
-  enum KeyType {
-    Delete,
-    Insert,
-    Clear,
-    Solve
-  }
-
-  function getOnPressHandler(keyType: KeyType) {
-    switch (keyType) {
-      case KeyType.Insert:
-        return insertToDisplay
-      case KeyType.Solve:
-        return (keyPressed: String) => {
-          solve()
-        }
+  function onKeyPress(keyPress: string) {
+    switch (keyPress) {
+      case "X":
+        insertToDisplay("*")
+        break;
+      case "=":
+        solve()
+        break;
       default:
-        console.log("Key type is not available")
-        return (keyPressed: String) => { }
+        insertToDisplay(keyPress)
     }
   }
 
   return (
     <View style={[styles.container, style]}>
       <View style={styles.row}>
-        <KeypadButton title="7" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="8" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="9" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="X" onPress={getOnPressHandler(KeyType.Insert)} />
+        <KeypadButton title="7" onPress={onKeyPress} />
+        <KeypadButton title="8" onPress={onKeyPress} />
+        <KeypadButton title="9" onPress={onKeyPress} />
+        <KeypadButton title="X" onPress={onKeyPress} />
       </View>
       <View style={styles.row}>
-        <KeypadButton title="4" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="5" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="6" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="-" onPress={getOnPressHandler(KeyType.Insert)} />
+        <KeypadButton title="4" onPress={onKeyPress} />
+        <KeypadButton title="5" onPress={onKeyPress} />
+        <KeypadButton title="6" onPress={onKeyPress} />
+        <KeypadButton title="-" onPress={onKeyPress} />
       </View>
       <View style={styles.row}>
-        <KeypadButton title="1" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="2" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="3" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="+" onPress={getOnPressHandler(KeyType.Insert)} />
+        <KeypadButton title="1" onPress={onKeyPress} />
+        <KeypadButton title="2" onPress={onKeyPress} />
+        <KeypadButton title="3" onPress={onKeyPress} />
+        <KeypadButton title="+" onPress={onKeyPress} />
       </View>
       <View style={styles.row}>
-        <KeypadButton title="0" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="00" onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="." onPress={getOnPressHandler(KeyType.Insert)} />
-        <KeypadButton title="=" onPress={getOnPressHandler(KeyType.Solve)} />
+        <KeypadButton title="0" onPress={onKeyPress} />
+        <KeypadButton title="00" onPress={onKeyPress} />
+        <KeypadButton title="." onPress={onKeyPress} />
+        <KeypadButton title="=" onPress={onKeyPress} />
       </View>
     </View>
   );
