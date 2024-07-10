@@ -5,10 +5,11 @@ import { evaluate } from "mathjs";
 interface keypadProps {
   output: string
   setOutput: React.Dispatch<React.SetStateAction<string>>
+  onUserError: (errorMessage: string) => void
   style?: StyleProp<ViewStyle>
 }
 
-export default function Keypad({ output, setOutput, style }: keypadProps) {
+export default function Keypad({ output, setOutput, onUserError, style }: keypadProps) {
 
   function insertToDisplay(charToInsert: string): void {
     if (output === "" && charToInsert.at(0) === "0") {
@@ -27,7 +28,8 @@ export default function Keypad({ output, setOutput, style }: keypadProps) {
       const solution: string = evaluate(output).toString()
       setOutput(solution)
     } catch (e) {
-      console.error(e)
+      // TODO: CATCH MORE ERRORS
+      onUserError("Syntax error")
     }
   }
 
