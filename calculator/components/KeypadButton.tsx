@@ -18,10 +18,8 @@ export default function KeypadButton({ title, onPress, style }: keypadButtonProp
   return (
     <Pressable
       style={[styles.button, { backgroundColor: buttonColor }, style]}
-      onPress={() => {
-        onPress(title)
-      }}
       onPressIn={() => {
+        onPress(title)
         setButtonColor(ON_PRESS_IN_COLOR)
       }}
       onPressOut={() => {
