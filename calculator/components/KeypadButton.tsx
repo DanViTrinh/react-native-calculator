@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, StyleSheet, Pressable, ViewStyle, StyleProp } from 'react-native';
+import React from 'react';
+import { Text, StyleSheet, ViewStyle, StyleProp, TouchableOpacity } from 'react-native';
 
 interface keypadButtonProps {
   title: String,
@@ -8,26 +8,15 @@ interface keypadButtonProps {
   style?: StyleProp<ViewStyle>
 }
 
+
 export default function KeypadButton({ title, onPress, style }: keypadButtonProps) {
-
-  const ON_PRESS_IN_COLOR = "grey"
-  const DEFAULT_COLOR = "#2196F3"
-
-  const [buttonColor, setButtonColor] = useState<string>(DEFAULT_COLOR)
-
   return (
-    <Pressable
-      style={[styles.button, { backgroundColor: buttonColor }, style]}
-      onPressIn={() => {
-        onPress(title)
-        setButtonColor(ON_PRESS_IN_COLOR)
-      }}
-      onPressOut={() => {
-        setButtonColor(DEFAULT_COLOR)
-      }}
+    <TouchableOpacity
+      style={[styles.button, style]}
+      onPressIn={() => { onPress(title) }}
     >
       <Text style={styles.text}>{title}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 
@@ -37,7 +26,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 3,
     flex: 1,
-    aspectRatio: 1
+    aspectRatio: 1,
+    backgroundColor: '#2196F3'
   },
   text: {
     fontSize: 30,

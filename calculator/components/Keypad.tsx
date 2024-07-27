@@ -99,6 +99,5 @@ const styles = StyleSheet.create({
   row: {
     display: "flex",
     flexDirection: 'row',
-    backgroundColor: "red"
   },
 })
