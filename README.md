@@ -22,7 +22,7 @@ to using this to learn react native.
 cd calculator && npx expo start
 ```
 
-## Functioalities
+## Functionalities
 
 - [x] Simple calculator functionality
 - [ ] Available in play store
