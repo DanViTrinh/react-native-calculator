@@ -24,11 +24,11 @@ cd calculator && npx expo start
 
 ## Functioalities
 
-- [ ] Simple calculator functionality
+- [x] Simple calculator functionality
 - [ ] Available in play store
 - [ ] Available in app store
-- [ ] Minimalistic design
-- [ ] Ability to move the calculator view cursor
+- [x] Minimalistic design
+- [x] Ability to move the calculator view cursor
 - [ ] Ability to save previous calculations
 - [ ] Graphing
 - [ ] Dockerize
